@@ -6,7 +6,6 @@ using namespace std;
 struct Nodo{
 	char nombre[100];
 	int edad;
-	bool ingresoIzq;
 	Nodo *predecesor, *sucesor;
 };
 
@@ -43,14 +42,12 @@ void insertar(Nodo **frenteIzq, Nodo **frenteDer){
 				cout << "\t**Primer usuario registrado con exito";				
 			}else{
 				if(nuevo->edad > (*frenteIzq)->edad){ //ingresa por el lado izquierdo (primera posicion)
-					nuevo->ingresoIzq = true;
 					nuevo->sucesor = *frenteIzq;
 					(*frenteIzq)->predecesor = nuevo;
 					nuevo->predecesor = NULL;
 					*frenteIzq = nuevo;
 					cout << "\t**Usuario registrado con exito, edad mayor al resto de la cola -> ingresa al inicio de la cola";
 				}else{ //ingresa por el lado derecho (ultima posicion)
-					nuevo->ingresoIzq = false;
 					nuevo->predecesor = *frenteDer;
 					(*frenteDer)->sucesor = nuevo;
 					nuevo->sucesor = NULL;
